@@ -138,11 +138,12 @@ textarea {
 h3.infoTitle {
   font-family: 'BDScript';
   color: #222;
+  font-weight: normal;
+  font-size: 2.5rem;
 }
 
 /* Base styles for the menu */
 .menu {
-  width: 90%;
   margin: 0 auto;
   z-index: 1000;
   padding: 10px 0;
@@ -153,7 +154,7 @@ h3.infoTitle {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
   margin: 0;
   padding: 0;
 }
@@ -179,8 +180,9 @@ h3.infoTitle {
   line-height: 1em;
 }
 
-.menu a:not(:first-child):before {
+.menu li:not(:first-child):before {
   content: " • ";
+  padding-right: 25px;
 }
 
 .menu a:hover {
@@ -221,7 +223,8 @@ h3.infoTitle {
 h1,
 h2 {
   font-family: BDScript;
-  padding-bottom: 1em;
+  font-size: 4em;
+  font-weight: normal;
   color: #aaa;
 }
 
