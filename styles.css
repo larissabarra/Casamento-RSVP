@@ -390,9 +390,9 @@ form select {
 
 .box {
   width: var(--size);
-  height: var(--vertical-size);
   margin: 0 auto;
-  box-shadow: 0px 0px 15px #aaa;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
 .border {
