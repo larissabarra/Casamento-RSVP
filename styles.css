@@ -1,6 +1,6 @@
 @font-face {
-  font-family: voga;
-  src: url(VogaMedium.ttf) format('truetype');
+  font-family: cursive;
+  src: url(BDScript-Regular.otf) format('truetype');
 }
 
 @font-face {
@@ -136,8 +136,8 @@ textarea {
 }
 
 h3.infoTitle {
-  font-family: 'voga';
-  color: #0f1869;
+  font-family: 'cursive';
+  color: #222;
 }
 
 /* Base styles for the menu */
@@ -172,11 +172,11 @@ h3.infoTitle {
 
 .menu a {
   text-decoration: none;
-  color: #0f1869;
+  color: #222;
   font-weight: bold;
   font-size: 1.8rem;
   transition: color 0.3s;
-  font-family: voga;
+  font-family: cursive;
   line-height: 1em;
 }
 
@@ -217,9 +217,9 @@ h3.infoTitle {
 
 h1,
 h2 {
-  font-family: voga;
+  font-family: cursive;
   padding-bottom: 1em;
-  color: #907c5a;
+  color: #aaa;
 }
 
 #rsvp h1,
@@ -250,10 +250,10 @@ form {
 
 form button[type="submit"] {
   padding: 10px 20px;
-  font-family: 'voga';
+  font-family: 'cursive';
   font-size: large;
   letter-spacing: 2px;
-  background: #907c5a;
+  background: #aaa;
   border: none;
   color: white;
   cursor: pointer;
@@ -335,10 +335,10 @@ form select {
 
 #changeRsvpButton {
   padding: 10px 20px;
-  font-family: 'voga';
+  font-family: 'cursive';
   font-size: large;
   letter-spacing: 2px;
-  background: #907c5a;
+  background: #aaa;
   border: none;
   color: white;
   cursor: pointer;
@@ -354,7 +354,7 @@ form select {
   --s-border-1: 3px;
   --s-border-2: 2px;
   --s-border-3: 3px;
-  --c-border-1: #907c5a;
+  --c-border-1: #aaa;
   --c-border-2: #ccaf7c;
   --c-border-3: #ccaf7c;
   --r-border-3: 3vh;
@@ -491,7 +491,7 @@ form select {
     text-align: center;
     background-color: #fff;
     padding-bottom: 10px;
-    border: 1px solid #907c5a;
+    border: 1px solid #aaa;
     border-top: 0;
   }
 
