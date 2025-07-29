@@ -38,20 +38,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 
-  &:before {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* Adjusted for better mobile compatibility */
-    background: url('bg.png') bottom center repeat-x;
-    background-size: auto 30%;
-    background-attachment: fixed;
-    z-index: -1;
-    pointer-events: none;
-  }
+  background-image: url('bottom.png');
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 160px 295px;
 }
 
 /* Make buttons and form elements more touch-friendly */
@@ -71,7 +62,7 @@ textarea {
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 33vh 10vw 20vh 10vw;
+  padding: 28vh 10vw 20vh 10vw;
 }
 
 /* Ensure smooth flexbox behavior on older browsers */
@@ -114,7 +105,7 @@ textarea {
 
 .welcomeImageContainer {
   flex: 0 1 30vw;
-  align-self: flex-start;
+  align-self: center;
   max-width: 90vw;
   min-width: 200px;
   display: block;
@@ -126,8 +117,17 @@ textarea {
   height: auto;
   max-height: 60vh;
   object-fit: scale-down;
-  aspect-ratio: 1658 / 1644;
   display: block;
+
+  background: transparent;
+  padding: 0.5rem 0.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
 }
 
 #infoContent {
@@ -373,13 +373,19 @@ form select {
 
 #top {
   position: fixed;
-  background: var(--color-bg);
   padding-top: 15vh;
-  padding-bottom: 8vh;
+  padding-bottom: 3vh;
   left: 50%;
   transform: translate(-50%, 0);
   width: 100%;
+  background-color: #fff;
   z-index: 10;
+
+  background-image: url('top.png');
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 140px 180px;
 
   &:before {
     content: '';
@@ -390,7 +396,7 @@ form select {
     height: auto;
     max-height: 11vh;
     aspect-ratio: 3166 / 481;
-    background-image: url('top.png');
+    background-image: url('logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
