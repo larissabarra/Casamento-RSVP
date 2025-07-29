@@ -220,6 +220,10 @@ h3.infoTitle {
   max-width: 45%;
 }
 
+#logo158 {
+  clip-path: circle(125px at center);
+}
+
 h1,
 h2 {
   font-family: BDScript;
