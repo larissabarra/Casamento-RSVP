@@ -1,0 +1,560 @@
+@font-face {
+  font-family: voga;
+  src: url(VogaMedium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: poiret;
+  src: url(PoiretOne-Regular.ttf) format('truetype');
+}
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 2em;
+  -webkit-tap-highlight-color: transparent;
+  /* Removes tap highlight on mobile */
+}
+
+/* Ensure smooth scrolling behavior on all devices */
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* Prevents iOS from resizing text */
+  touch-action: manipulation;
+  /* Improves tap response on buttons */
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  font-family: poiret;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  &:before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Adjusted for better mobile compatibility */
+    background: url('bg.png') bottom center repeat-x;
+    background-size: auto 30%;
+    background-attachment: fixed;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+/* Make buttons and form elements more touch-friendly */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* General page styling */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 33vh 10vw 20vh 10vw;
+}
+
+/* Ensure smooth flexbox behavior on older browsers */
+#locationContent,
+#welcomeContent {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  min-width: 0;
+  /* Ensures flex children behave consistently */
+}
+
+#locationContent .locationContent__child,
+#welcomeContent .welcomeContent__child {
+  flex: 1 1 48%;
+  max-width: 45%;
+  width: auto;
+  min-width: 30vw;
+}
+
+#map {
+  height: 30vh;
+}
+
+#locationInfo,
+#welcomeInfo {
+  text-align: left;
+}
+
+#locationInfo svg {
+  max-height: 2.5em;
+}
+
+#locationInfo h3 {
+  padding: 10px auto;
+}
+
+.welcomeImageContainer {
+  flex: 0 1 30vw;
+  align-self: flex-start;
+  max-width: 90vw;
+  min-width: 200px;
+  display: block;
+}
+
+/* Image itself */
+.welcomeImage {
+  max-width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: scale-down;
+  aspect-ratio: 1658 / 1644;
+  display: block;
+}
+
+#infoContent {
+  max-width: 60vw;
+  text-align: left;
+}
+
+h3.infoTitle {
+  font-family: 'voga';
+  color: #0f1869;
+}
+
+/* Base styles for the menu */
+.menu {
+  width: 90%;
+  margin: 0 auto;
+  z-index: 1000;
+  padding: 10px 0;
+  position: relative;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li {
+  display: inline;
+}
+
+/* Default: hide the toggle button on larger screens */
+.menu-toggle {
+  display: none;
+  position: relative;
+  z-index: 1000;
+  height: 100%;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #0f1869;
+  font-weight: bold;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+  font-family: voga;
+  line-height: 1em;
+}
+
+.menu a:hover {
+  color: #aaa;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#mainContent,
+#loadingMessage {
+  width: 100%;
+  height: 100%;
+  min-height: 70%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+#sectionsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+  width: 50vw;
+}
+
+#sectionsContainer section {
+  flex: 1;
+  max-width: 45%;
+}
+
+h1,
+h2 {
+  font-family: voga;
+  padding-bottom: 1em;
+  color: #907c5a;
+}
+
+#rsvp h1,
+#rsvp h2 {
+  padding: 0;
+}
+
+p {
+  padding-bottom: 15px;
+}
+
+.superTitle {
+  font-size: 3em;
+  font-weight: bold;
+  color: #c9b05e;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#gallery {
+  width: 100%;
+  height: 100vh;
+}
+
+form {
+  z-index: 1;
+}
+
+form button[type="submit"] {
+  padding: 10px 20px;
+  font-family: 'voga';
+  font-size: large;
+  letter-spacing: 2px;
+  background: #907c5a;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+button[type="submit"]:active {
+  background: #ccaf7c;
+}
+
+/* General form layout */
+form label {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+form input[type="text"],
+form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  font-family: 'poiret';
+}
+
+/* Improved form and radio button behavior */
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  /* Ensures proper alignment on smaller screens */
+}
+
+.radio-group__question {
+  flex: 3;
+  text-align: right;
+  margin: 0;
+}
+
+.radio-group__options {
+  flex-direction: column;
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}
+
+.radio-group label:first-child {
+  margin-right: 10px;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 5px;
+  accent-color: rgb(16, 18, 129);
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+}
+
+.radio-group label[for="RSVPYes"],
+.radio-group label[for="RSVPNo"] {
+  margin-right: 15px;
+  /* Space between radio options */
+  display: inline-block;
+}
+
+/* Food preference field and label alignment */
+.food-preference {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+#changeRsvpButton {
+  padding: 10px 20px;
+  font-family: 'voga';
+  font-size: large;
+  letter-spacing: 2px;
+  background: #907c5a;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+:root {
+  --size: 70vw;
+  --vertical-size: 8vh;
+  --size-padding: 1.5vh;
+  --size-inner-border: 1.5vw;
+  --size-corner: 3.5vh;
+  --color-bg: #fff;
+  --s-border-1: 3px;
+  --s-border-2: 2px;
+  --s-border-3: 3px;
+  --c-border-1: #907c5a;
+  --c-border-2: #ccaf7c;
+  --c-border-3: #ccaf7c;
+  --r-border-3: 3vh;
+  --o-border-3: 5vh;
+}
+
+#top {
+  position: fixed;
+  background: var(--color-bg);
+  padding-top: 15vh;
+  padding-bottom: 8vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+  z-index: 10;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-100% - 2vh));
+    width: 90%;
+    height: auto;
+    max-height: 11vh;
+    aspect-ratio: 3166 / 481;
+    background-image: url('top.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+  }
+}
+
+.box {
+  width: var(--size);
+  height: var(--vertical-size);
+  margin: 0 auto;
+  box-shadow: 0px 0px 15px #aaa;
+}
+
+.border {
+  width: var(--size);
+  height: var(--vertical-size);
+  border: var(--s-border-1) solid var(--c-border-1);
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: calc(var(--size) - var(--size-inner-border) - var(--s-border-1)*2);
+    height: calc(100% - var(--size-inner-border));
+    left: calc(var(--size-inner-border) / 2);
+    top: calc(var(--size-inner-border) / 2);
+    box-sizing: border-box;
+    border: var(--s-border-2) solid var(--c-border-2);
+  }
+
+  &__corner {
+    --size: var(--size-corner, 20px);
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    border: var(--s-border-2) solid var(--c-border-2);
+    background: var(--c-corner-bg, transparent);
+    transform: translate(var(--move-x, 0), var(--move-y, 0));
+
+    &--top {
+      --move-y: -50%;
+      top: 0;
+    }
+
+    &--right {
+      --move-x: 50%;
+      right: 0;
+    }
+
+    &--left {
+      --move-x: -50%;
+      left: 0;
+    }
+
+    &--bottom {
+      --move-y: 50%;
+      bottom: 0;
+    }
+  }
+}
+
+.cutout {
+  width: var(--size);
+  padding: var(--o-border-3);
+  height: var(--vertical-size);
+  position: absolute;
+  inset: 50%;
+  transform: translate(-50%, -15%);
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0 -1vh;
+    background: radial-gradient(var(--r-border-3) at var(--r-border-3) var(--r-border-3),
+        transparent calc(98% - var(--s-border-3)),
+        var(--c-border-3) calc(100% - var(--s-border-3)) 98%,
+        transparent) calc(var(--r-border-3) * -1) calc(var(--r-border-3) * -1),
+      linear-gradient(90deg,
+        var(--c-border-3) var(--s-border-3),
+        transparent 0 calc(100% - var(--s-border-3)),
+        var(--c-border-3) 0) 50%/100% calc(100% - (var(--r-border-3) * 2) + var(--s-border-3)) no-repeat,
+      linear-gradient(var(--c-border-3) var(--s-border-3),
+        transparent 0 calc(100% - var(--s-border-3)),
+        var(--c-border-3) 0) 50% / calc(100% - (var(--r-border-3) * 2) + var(--s-border-3)) 100% no-repeat;
+  }
+}
+
+/* Responsive behavior for mobile */
+@media (max-width: 600px) {
+
+  body::before {
+    height: 30vh;
+    background-size: contain;
+    background-attachment: scroll;
+  }
+
+  .menu-toggle {
+    display: block !important;
+  }
+
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    background-color: #fff;
+    padding-bottom: 10px;
+    border: 1px solid #907c5a;
+    border-top: 0;
+  }
+
+  .menu ul.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+    color: #000149;
+    margin: 0 auto;
+    font-size: 1.5rem;
+  }
+
+  .border {
+    flex-direction: column;
+  }
+
+  #locationContent {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  #locationContent .locationContent__child {
+    flex: 1 1 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #welcomeContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #welcomeContent .welcomeContent__child {
+    flex: 1 1 100%;
+    max-width: 100% !important;
+    text-align: center;
+  }
+
+  .welcomeImageContainer {
+    flex: 0 1 80vw;
+    max-width: 90%;
+    align-self: center;
+  }
+
+  #sectionsContainer {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
+
+  #sectionsContainer section {
+    width: 60vw;
+    max-width: 100%;
+  }
+
+  #infoContent {
+    max-width: 90vw;
+    text-align: center;
+  }
+}
