@@ -260,7 +260,6 @@ form {
 
 form button[type="submit"] {
   padding: 10px 20px;
-  font-family: 'BDScript';
   font-size: large;
   letter-spacing: 2px;
   background: #aaa;
@@ -507,12 +506,16 @@ form select {
     text-align: center;
     background-color: #fff;
     padding-bottom: 10px;
-    border: 1px solid #aaa;
     border-top: 0;
   }
 
   .menu ul.open {
     display: flex;
+  }
+
+  .menu li:not(:first-child):before {
+    content: "";
+    padding: 0;
   }
 
   .menu-toggle {
@@ -544,6 +547,7 @@ form select {
   #welcomeContent {
     flex-direction: column;
     align-items: center;
+    gap: 0;
   }
 
   #welcomeContent .welcomeContent__child {
