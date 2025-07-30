@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 let row = urlParams.get('r');
 let plusOne = urlParams.has('p');
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbwd-neMhBu9Jbu7iVPHrAxsg07i-iB3vF89Ol70KIPA5OqdQNz3mtl4ETtjzkO3DkCzlg/exec';
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbxLQaem67y_pLRxr-OKupsJ9Sn54A2Od448XAWlzNqOGE9gP4vuvmDG3aH-GdwC-dhmfA/exec';
 
 let cachedData = null;
 let cachedPlusOneData = null;
@@ -27,15 +27,14 @@ if (row) {
 function displayData(guestData, plusOneData) {
     const greetingElement = document.getElementById('greeting');
     greetingElement.textContent = plusOneData
-        ? `Hello, ${guestData.name} & ${plusOneData.name}!`
-        : `Hello, ${guestData.name}!`;
+        ? `Olá, ${guestData.name} & ${plusOneData.name}!`
+        : `Olá, ${guestData.name}!`;
 
     document.getElementById('mainGuestName').textContent = guestData.name;
     if (document.querySelector(`input[name="mainResponse"][value="${guestData.rsvp}"]`) != null) {
         document.querySelector(`input[name="mainResponse"][value="${guestData.rsvp}"]`).checked = true;
     }
-    document.getElementById('mainFood').value = guestData.food;
-    document.getElementById('mainFoodDetails').value = guestData.foodDetails;
+    document.getElementById('children').value = guestData.food;
 
     if (plusOneData) {
         plusOne = true;
@@ -44,8 +43,6 @@ function displayData(guestData, plusOneData) {
         if (document.querySelector(`input[name="plusOneResponse"][value="${plusOneData.rsvp}"]`) != null) {
             document.querySelector(`input[name="plusOneResponse"][value="${plusOneData.rsvp}"]`).checked = true;
         }
-        document.getElementById('plusOneFood').value = plusOneData.food;
-        document.getElementById('plusOneFoodDetails').value = plusOneData.foodDetails;
     }
 
     document.getElementById('loadingMessage').classList.add('hidden');
@@ -55,43 +52,17 @@ function displayData(guestData, plusOneData) {
 
 function showRSVPSummary(guestData, plusOneData) {
     console.log(guestData);
-    let summaryText = `${guestData.name} is ${guestData.rsvp == "Yes" ? "" : "not "}coming.`
-    if (guestData.rsvp == "Yes") {
-        summaryText += ` Dietary restrictions: ${guestData.food}`;
-        if (guestData.foodDetails != "") {
-            summaryText += ` (${guestData.foodDetails}).`;
-        } else {
-            summaryText += '.';
-        }
-    }
+    let summaryText = `${guestData.name} ${guestData.rsvp == "Yes" ? "" : "não "}vem.`
     if (plusOne) {
         summaryText += '<br/>';
-        summaryText += `${plusOneData.name} is ${plusOneData.rsvp == "Yes" ? "" : "not "}coming.`
-        if (plusOneData.rsvp == "Yes") {
-            summaryText += ` Dietary restrictions: ${plusOneData.food}`;
-            if (plusOneData.foodDetails != "") {
-                summaryText += ` (${plusOneData.foodDetails}).`;
-            } else {
-                summaryText += '.';
-            }
-        }
+        summaryText += `${plusOneData.name} ${plusOneData.rsvp == "Yes" ? "" : "não "}vem.`
+    }
+    if (guestData.food != "") {
+        summaryText += '<br/>';
+        summaryText += `Também tem ${guestData.food}.`;
     }
     document.getElementById("rsvpSummary").innerHTML = '<p>' + summaryText + '</p>';
     document.getElementById("rsvpSuccess").classList.remove("hidden");
-}
-
-function setupFoodDetailsToggle() {
-    const mainFoodSelect = document.getElementById("mainFood");
-    const mainFoodDetails = document.getElementById("foodDetailsContainer");
-    mainFoodSelect.addEventListener("change", () => {
-        mainFoodDetails.classList.toggle("hidden", !["Allergy", "Other"].includes(mainFoodSelect.value));
-    });
-
-    const plusOneFoodSelect = document.getElementById("plusOneFood");
-    const plusOneFoodDetails = document.getElementById("plusOneFoodDetailsContainer");
-    plusOneFoodSelect.addEventListener("change", () => {
-        plusOneFoodDetails.classList.toggle("hidden", !["Allergy", "Other"].includes(plusOneFoodSelect.value));
-    });
 }
 
 function fetchData(fromUrl) {
@@ -108,8 +79,8 @@ function fetchData(fromUrl) {
                 row = data[0][0];
                 plusOne = data[0][2] == 'yes';
             }
-            const guestData = { name: data[0][1], rsvp: data[0][3], food: data[0][4], foodDetails: data[0][5] };
-            const plusOneData = plusOne && data[1] ? { name: data[1][1], rsvp: data[1][3], food: data[1][4], foodDetails: data[1][5] } : null;
+            const guestData = { name: data[0][1], rsvp: data[0][3], food: data[0][4] };
+            const plusOneData = plusOne && data[1] ? { name: data[1][1], rsvp: data[1][3], food: data[1][4] } : null;
 
             cachedData = guestData;
             cachedPlusOneData = plusOneData;
@@ -163,39 +134,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const mainGuestRSVP = document.querySelector('input[name="mainResponse"]:checked').value;
         if (mainGuestRSVP == null) {
-            alert('Please select your RSVP.');
+            alert('Por favor selecione uma resposta.');
         }
-        let mainGuestFood = document.getElementById("mainFood").value;
-        if (mainGuestFood == "") {
-            mainGuestFood = "None";
-        }
-        const mainGuestFoodDetails = ["Allergy", "Other"].includes(mainGuestFood) ? document.getElementById("mainFoodDetails").value : "";
+        let mainGuestFood = document.getElementById("children").value;
 
         const postData = new URLSearchParams({
             row: row,
             response: mainGuestRSVP,
-            food: mainGuestFood,
-            foodDetails: mainGuestFoodDetails
+            food: mainGuestFood
         });
 
         let plusOneRSVP = null;
         let plusOneFood = null;
-        let plusOneFoodDetails = null;
         if (plusOne) {
             plusOneRSVP = document.querySelector('input[name="plusOneResponse"]:checked').value;
             if (plusOneRSVP == null) {
                 alert('Please select your RSVP.');
             }
             plusOneFood = document.getElementById("plusOneFood").value;
-            if (plusOneFood == "") {
-                plusOneFood = "None";
-            }
-            plusOneFoodDetails = ["Allergy", "Other"].includes(plusOneFood) ? document.getElementById("plusOneFoodDetails").value : "";
 
             postData.append('plusOneRow', parseInt(row) + 1);
             postData.append('plusOneResponse', plusOneRSVP);
             postData.append('plusOneFood', plusOneFood);
-            postData.append('plusOneFoodDetails', plusOneFoodDetails);
         }
 
         fetch(webAppUrl, {
@@ -210,12 +170,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 document.getElementById("mainContent").classList.add("hidden");
                 cachedData.rsvp = mainGuestRSVP;
                 cachedData.food = mainGuestFood;
-                cachedData.foodDetails = mainGuestFoodDetails;
                 localStorage.setItem('guestData_' + row, JSON.stringify(cachedData));
                 if (plusOne) {
                     cachedPlusOneData.rsvp = plusOneRSVP;
                     cachedPlusOneData.food = plusOneFood;
-                    cachedPlusOneData.foodDetails = plusOneFoodDetails;
                     localStorage.setItem('guestData_' + (Number(row) + 1), JSON.stringify(cachedPlusOneData));
                 }
                 document.body.style.cursor = "default";
@@ -224,7 +182,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             .catch(error => {
                 console.error('Error posting data:', error);
                 document.body.style.cursor = "default";
-                alert('Failed to submit RSVP.');
+                alert('Erro ao submeter resposta.');
             });
     });
 

@@ -164,34 +164,17 @@
 
                         <!-- RSVP Radio Buttons -->
                         <div class="radio-group">
-                            <label class="radio-group__question">Are you coming?</label>
+                            <label class="radio-group__question">Você vem?</label>
                             <div class="radio-group__options">
                                 <div class="radio-option">
                                     <input type="radio" id="mainRSVPYes" name="mainResponse" value="Yes">
-                                    <label for="mainRSVPYes">Yes</label>
+                                    <label for="mainRSVPYes">Sim</label>
                                 </div>
                                 <div class="radio-option">
                                     <input type="radio" id="mainRSVPNo" name="mainResponse" value="No">
-                                    <label for="mainRSVPNo">No</label>
+                                    <label for="mainRSVPNo">Não</label>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Food Preference Dropdown -->
-                        <div class="food-preference">
-                            <label for="mainFood">Food Preference:</label>
-                            <select id="mainFood">
-                                <option value="None">None</option>
-                                <option value="Vegetarian">Vegetarian</option>
-                                <option value="Vegan">Vegan</option>
-                                <option value="Allergy">Allergy</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-
-                        <!-- Food Details -->
-                        <div id="foodDetailsContainer" class="hidden food-preference">
-                            <label>Food Details: <input type="text" id="mainFoodDetails"></label>
                         </div>
                     </section>
 
@@ -199,44 +182,30 @@
                         <h2 id="plusOneName"></h2>
                         <!-- RSVP Radio Buttons -->
                         <div class="radio-group">
-                            <label class="radio-group__question">Are you coming?</label>
+                            <label class="radio-group__question">Você vem?</label>
                             <div class="radio-group__options">
                                 <div class="radio-option">
                                     <input type="radio" id="plusOneRSVPYes" name="plusOneResponse" value="Yes">
-                                    <label for="plusOneRSVPYes">Yes</label>
+                                    <label for="plusOneRSVPYes">Sim</label>
                                 </div>
                                 <div class="radio-option">
                                     <input type="radio" id="plusOneRSVPNo" name="plusOneResponse" value="No">
-                                    <label for="plusOneRSVPNo">No</label>
+                                    <label for="plusOneRSVPNo">Não</label>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Food Preference Dropdown -->
-                        <div class="food-preference">
-                            <label for="plusOneFood">Food Preference:</label>
-                            <select id="plusOneFood">
-                                <option value="None">None</option>
-                                <option value="Vegetarian">Vegetarian</option>
-                                <option value="Vegan">Vegan</option>
-                                <option value="Allergy">Allergy</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-
-                        <!-- Food Details -->
-                        <div id="plusOneFoodDetailsContainer" class="hidden food-preference">
-                            <label>Food Details: <input type="text" id="plusOneFoodDetails"></label>
-                        </div>
                     </section>
+
+                    <label for="children">Crianças e suas idades:</label>
+                    <textarea id="children" name="children" rows="4" cols="50"></textarea>
                 </div>
-                <button type="submit">Submit RSVP</button>
+                <button type="submit">Responder</button>
             </form>
         </div>
 
         <div id="rsvpSuccess" class="hidden">
             <div id="rsvpSummary"></div>
-            <button id="changeRsvpButton" type="button">Change RSVP</button>
+            <button id="changeRsvpButton" type="button">Mudar resposta</button>
         </div>
 
         <script src="script.js"></script>
