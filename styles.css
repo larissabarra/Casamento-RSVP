@@ -208,16 +208,32 @@ h3.infoTitle {
 
 #sectionsContainer {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
   gap: 60px;
   width: 50vw;
 }
 
-#sectionsContainer section {
+#topRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#topRow:has(#plusOneSection.hidden) {
+  justify-content: center;
+  gap: 0;
+}
+
+#mainGuestSection,
+#plusOneSection {
   flex: 1;
   max-width: 45%;
+}
+
+#childrenSection {
+  flex-basis: 100%;
+  max-width: 100%;
 }
 
 #logo158 {
@@ -300,7 +316,7 @@ form select {
 }
 
 .radio-group__question {
-  flex: 3;
+  flex: 1;
   text-align: right;
   margin: 0;
 }
@@ -344,7 +360,6 @@ form select {
 
 #changeRsvpButton {
   padding: 10px 20px;
-  font-family: 'BDScript';
   font-size: large;
   letter-spacing: 2px;
   background: #aaa;

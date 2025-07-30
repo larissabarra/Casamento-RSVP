@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 let row = urlParams.get('r');
 let plusOne = urlParams.has('p');
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbxLQaem67y_pLRxr-OKupsJ9Sn54A2Od448XAWlzNqOGE9gP4vuvmDG3aH-GdwC-dhmfA/exec';
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbznf8SwxTBqXwoIhGwVdZzKIcFO4Gh3URsQII2cPa9Kz3rou41TP_U-7AcVslcbGfh53w/exec';
 
 let cachedData = null;
 let cachedPlusOneData = null;
@@ -126,8 +126,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     checkIfHasDataAndShowDataOrForm();
 
-    setupFoodDetailsToggle();
-
     document.getElementById("rsvpForm").addEventListener("submit", async (event) => {
         event.preventDefault();
         document.body.style.cursor = "wait";
@@ -151,11 +149,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (plusOneRSVP == null) {
                 alert('Please select your RSVP.');
             }
-            plusOneFood = document.getElementById("plusOneFood").value;
 
             postData.append('plusOneRow', parseInt(row) + 1);
             postData.append('plusOneResponse', plusOneRSVP);
-            postData.append('plusOneFood', plusOneFood);
         }
 
         fetch(webAppUrl, {

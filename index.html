@@ -159,45 +159,49 @@
             </p>
             <form id="rsvpForm" action="#">
                 <div id="sectionsContainer">
-                    <section id="mainGuestSection">
-                        <h2 id="mainGuestName"></h2>
+                    <div id="topRow">
+                        <section id="mainGuestSection">
+                            <h2 id="mainGuestName"></h2>
 
-                        <!-- RSVP Radio Buttons -->
-                        <div class="radio-group">
-                            <label class="radio-group__question">Você vem?</label>
-                            <div class="radio-group__options">
-                                <div class="radio-option">
-                                    <input type="radio" id="mainRSVPYes" name="mainResponse" value="Yes">
-                                    <label for="mainRSVPYes">Sim</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="mainRSVPNo" name="mainResponse" value="No">
-                                    <label for="mainRSVPNo">Não</label>
+                            <!-- RSVP Radio Buttons -->
+                            <div class="radio-group">
+                                <label class="radio-group__question">Você vem?</label>
+                                <div class="radio-group__options">
+                                    <div class="radio-option">
+                                        <input type="radio" id="mainRSVPYes" name="mainResponse" value="Yes">
+                                        <label for="mainRSVPYes">Sim</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="mainRSVPNo" name="mainResponse" value="No">
+                                        <label for="mainRSVPNo">Não</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <section id="plusOneSection" class="hidden">
-                        <h2 id="plusOneName"></h2>
-                        <!-- RSVP Radio Buttons -->
-                        <div class="radio-group">
-                            <label class="radio-group__question">Você vem?</label>
-                            <div class="radio-group__options">
-                                <div class="radio-option">
-                                    <input type="radio" id="plusOneRSVPYes" name="plusOneResponse" value="Yes">
-                                    <label for="plusOneRSVPYes">Sim</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="plusOneRSVPNo" name="plusOneResponse" value="No">
-                                    <label for="plusOneRSVPNo">Não</label>
+                        <section id="plusOneSection" class="hidden">
+                            <h2 id="plusOneName"></h2>
+                            <!-- RSVP Radio Buttons -->
+                            <div class="radio-group">
+                                <label class="radio-group__question">Você vem?</label>
+                                <div class="radio-group__options">
+                                    <div class="radio-option">
+                                        <input type="radio" id="plusOneRSVPYes" name="plusOneResponse" value="Yes">
+                                        <label for="plusOneRSVPYes">Sim</label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <input type="radio" id="plusOneRSVPNo" name="plusOneResponse" value="No">
+                                        <label for="plusOneRSVPNo">Não</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
 
-                    <label for="children">Crianças e suas idades:</label>
-                    <textarea id="children" name="children" rows="4" cols="50"></textarea>
+                    <section id="childrenSection">
+                        <label for="children">Crianças e suas idades:</label>
+                        <textarea id="children" name="children" rows="4" cols="50"></textarea>
+                    </section>
                 </div>
                 <button type="submit">Responder</button>
             </form>
